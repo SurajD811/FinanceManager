@@ -88,7 +88,7 @@ export default function MoneyReceivedPage() {
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl sm:text-2xl tracking-tight font-bold">Total Received</h3>
             <div className="mono text-3xl font-bold text-accent-neutral" data-testid="total-received">
-              ${totalReceived.toFixed(2)}
+              ₹{totalReceived.toFixed(2)}
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function MoneyReceivedPage() {
                       <td className="py-3 text-text-secondary text-sm">{format(parseISO(item.date), 'MMM dd, yyyy')}</td>
                       <td className="py-3 text-text-primary font-medium">{item.sender}</td>
                       <td className="py-3 text-text-secondary text-sm">{item.description || '-'}</td>
-                      <td className="py-3 text-right mono font-medium text-accent-neutral">${item.amount.toFixed(2)}</td>
+                      <td className="py-3 text-right mono font-medium text-accent-neutral">₹{item.amount.toFixed(2)}</td>
                       <td className="py-3 text-right">
                         <button
                           onClick={() => handleDelete(item.id)}

@@ -132,7 +132,7 @@ export default function Dashboard() {
               <Wallet className="w-5 h-5 text-primary" strokeWidth={1.5} />
             </div>
             <div className="mono text-3xl font-bold text-text-primary">
-              ${summary?.total_balance?.toFixed(2) || '0.00'}
+              ₹{summary?.total_balance?.toFixed(2) || '0.00'}
             </div>
           </div>
 
@@ -142,7 +142,7 @@ export default function Dashboard() {
               <ArrowUpRight className="w-5 h-5 text-accent-positive" strokeWidth={1.5} />
             </div>
             <div className="mono text-3xl font-bold text-accent-positive">
-              ${summary?.total_income?.toFixed(2) || '0.00'}
+              ₹{summary?.total_income?.toFixed(2) || '0.00'}
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export default function Dashboard() {
               <ArrowDownLeft className="w-5 h-5 text-accent-negative" strokeWidth={1.5} />
             </div>
             <div className="mono text-3xl font-bold text-accent-negative">
-              ${summary?.total_expenses?.toFixed(2) || '0.00'}
+              ₹{summary?.total_expenses?.toFixed(2) || '0.00'}
             </div>
           </div>
 
@@ -162,11 +162,11 @@ export default function Dashboard() {
               <PiggyBank className="w-5 h-5 text-accent-neutral" strokeWidth={1.5} />
             </div>
             <div className="mono text-3xl font-bold text-text-primary">
-              ${summary?.total_investments?.toFixed(2) || '0.00'}
+              ₹{summary?.total_investments?.toFixed(2) || '0.00'}
             </div>
             <div className={`text-sm mt-2 flex items-center gap-1 ${summary?.investment_profit_loss >= 0 ? 'text-accent-positive' : 'text-accent-negative'}`}>
               {summary?.investment_profit_loss >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-              ${Math.abs(summary?.investment_profit_loss || 0).toFixed(2)}
+              ₹{Math.abs(summary?.investment_profit_loss || 0).toFixed(2)}
             </div>
           </div>
         </div>

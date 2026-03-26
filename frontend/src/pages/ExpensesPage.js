@@ -82,7 +82,7 @@ export default function ExpensesPage() {
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-xl sm:text-2xl tracking-tight font-bold">Total Expenses</h3>
             <div className="mono text-3xl font-bold text-accent-negative" data-testid="total-expenses">
-              ${totalExpenses.toFixed(2)}
+              ₹{totalExpenses.toFixed(2)}
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function ExpensesPage() {
                       <td className="py-3 text-text-secondary text-sm">{format(parseISO(item.date), 'MMM dd, yyyy')}</td>
                       <td className="py-3 text-text-primary font-medium capitalize">{item.category}</td>
                       <td className="py-3 text-text-secondary text-sm">{item.notes || '-'}</td>
-                      <td className="py-3 text-right mono font-medium text-accent-negative">${item.amount.toFixed(2)}</td>
+                      <td className="py-3 text-right mono font-medium text-accent-negative">₹{item.amount.toFixed(2)}</td>
                       <td className="py-3 text-right">
                         <div className="flex gap-2 justify-end">
                           <button

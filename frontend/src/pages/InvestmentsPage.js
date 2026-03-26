@@ -84,20 +84,20 @@ export default function InvestmentsPage() {
           <div className="bg-surface border border-border rounded-lg p-6">
             <span className="text-xs uppercase tracking-[0.2em] font-medium text-text-secondary">Total Invested</span>
             <div className="mono text-3xl font-bold text-text-primary mt-2" data-testid="total-invested">
-              ${totalInvested.toFixed(2)}
+              ₹{totalInvested.toFixed(2)}
             </div>
           </div>
           <div className="bg-surface border border-border rounded-lg p-6">
             <span className="text-xs uppercase tracking-[0.2em] font-medium text-text-secondary">Current Value</span>
             <div className="mono text-3xl font-bold text-text-primary mt-2" data-testid="current-value">
-              ${totalCurrentValue.toFixed(2)}
+              ₹{totalCurrentValue.toFixed(2)}
             </div>
           </div>
           <div className="bg-surface border border-border rounded-lg p-6">
             <span className="text-xs uppercase tracking-[0.2em] font-medium text-text-secondary">Profit/Loss</span>
             <div className={`mono text-3xl font-bold mt-2 flex items-center gap-2 ${totalProfitLoss >= 0 ? 'text-accent-positive' : 'text-accent-negative'}`} data-testid="profit-loss">
               {totalProfitLoss >= 0 ? <TrendingUp className="w-6 h-6" /> : <TrendingDown className="w-6 h-6" />}
-              ${Math.abs(totalProfitLoss).toFixed(2)}
+              ₹{Math.abs(totalProfitLoss).toFixed(2)}
             </div>
           </div>
         </div>
@@ -125,10 +125,10 @@ export default function InvestmentsPage() {
                       <tr key={item.id} className="border-b border-border hover:bg-surface-muted transition-colors">
                         <td className="py-3 text-text-secondary text-sm">{format(parseISO(item.date), 'MMM dd, yyyy')}</td>
                         <td className="py-3 text-text-primary font-medium capitalize">{item.type}</td>
-                        <td className="py-3 text-right mono text-text-primary">${item.amount_invested.toFixed(2)}</td>
-                        <td className="py-3 text-right mono text-text-primary">${item.current_value.toFixed(2)}</td>
+                        <td className="py-3 text-right mono text-text-primary">₹{item.amount_invested.toFixed(2)}</td>
+                        <td className="py-3 text-right mono text-text-primary">₹{item.current_value.toFixed(2)}</td>
                         <td className={`py-3 text-right mono font-medium ${profitLoss >= 0 ? 'text-accent-positive' : 'text-accent-negative'}`}>
-                          {profitLoss >= 0 ? '+' : ''}${profitLoss.toFixed(2)}
+                          {profitLoss >= 0 ? '+' : ''}₹{profitLoss.toFixed(2)}
                         </td>
                         <td className="py-3 text-text-secondary text-sm">{item.notes || '-'}</td>
                         <td className="py-3 text-right">
