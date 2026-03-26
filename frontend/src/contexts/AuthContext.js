@@ -10,7 +10,6 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
 
-  // 🔧 Logout (wrapped in useCallback for stability)
   const logout = useCallback(() => {
     localStorage.removeItem('token');
     setToken(null);
@@ -18,7 +17,7 @@ export function AuthProvider({ children }) {
     delete axios.defaults.headers.common['Authorization'];
   }, []);
 
-  // 🔧 Fetch user (wrapped in useCallback)
+  // ⚠️ DEFINE BEFORE useEffect
   const fetchUser = useCallback(async () => {
     try {
       const response = await axios.get(`${API_URL}/auth/me`);
@@ -31,7 +30,7 @@ export function AuthProvider({ children }) {
     }
   }, [logout]);
 
-  // 🔧 Effect (fixed dependency issue)
+  // ✅ Correct dependency
   useEffect(() => {
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -41,7 +40,6 @@ export function AuthProvider({ children }) {
     }
   }, [token, fetchUser]);
 
-  // 🔧 Login
   const login = async (email, password) => {
     const response = await axios.post(`${API_URL}/auth/login`, { email, password });
     const { access_token, user } = response.data;
@@ -54,7 +52,6 @@ export function AuthProvider({ children }) {
     return response.data;
   };
 
-  // 🔧 Signup
   const signup = async (email, password, name) => {
     const response = await axios.post(`${API_URL}/auth/signup`, { email, password, name });
     const { access_token, user } = response.data;
@@ -74,7 +71,6 @@ export function AuthProvider({ children }) {
   );
 }
 
-// 🔧 Hook
 export function useAuth() {
   return useContext(AuthContext);
 }
