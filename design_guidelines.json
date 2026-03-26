@@ -1,0 +1,133 @@
+{
+  "theme": "dark",
+  "archetype": "1_organic_and_earthy",
+  "design_philosophy": "A calm, grounded, and highly legible financial command center. Replaces standard fintech 'neon blue' with earthy, tactile colors (moss, terracotta, bone white) to evoke trust and stability. Leverages 'Control Room' dense grids for data clarity.",
+  "colors": {
+    "light": {
+      "background": "#F9F8F6",
+      "surface": "#FFFFFF",
+      "surface_muted": "#F0EFEA",
+      "border": "#E5E3DB",
+      "text_primary": "#1C1C19",
+      "text_secondary": "#5C5C57",
+      "primary": "#2E4D43",
+      "primary_hover": "#223932",
+      "accent_positive": "#4A7C59",
+      "accent_negative": "#D66853",
+      "accent_neutral": "#D4A373"
+    },
+    "dark": {
+      "background": "#121413",
+      "surface": "#1A1D1B",
+      "surface_muted": "#232724",
+      "border": "#2C312E",
+      "text_primary": "#F1F0EA",
+      "text_secondary": "#A3A7A4",
+      "primary": "#65A576",
+      "primary_hover": "#4A7C59",
+      "accent_positive": "#65A576",
+      "accent_negative": "#E27D60",
+      "accent_neutral": "#E5B990"
+    }
+  },
+  "typography": {
+    "heading_font": "Satoshi",
+    "body_font": "Manrope",
+    "mono_font": "JetBrains Mono",
+    "scale": {
+      "h1": "text-4xl sm:text-5xl tracking-tight leading-none",
+      "h2": "text-2xl sm:text-3xl tracking-tight leading-none",
+      "h3": "text-xl sm:text-2xl tracking-tight",
+      "h4": "text-lg font-medium",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm",
+      "label": "text-xs uppercase tracking-[0.2em] font-medium"
+    },
+    "rules": [
+      "No generic sans (Inter, Roboto) for headings.",
+      "Headings must use tight letter spacing.",
+      "Labels must be uppercase, tiny, with wide spacing.",
+      "Data/Numbers (like balance and amounts) should use the mono font or a tabular lining configuration."
+    ]
+  },
+  "layout": {
+    "spacing_scale": ["p-2", "p-4", "p-6", "p-8", "p-12", "p-16"],
+    "grid_system": {
+      "type": "Control Room Grid",
+      "rules": [
+        "Base Grid: grid-cols-1 md:grid-cols-3 lg:grid-cols-4",
+        "Gaps: gap-4 or gap-6",
+        "Summary Widgets: col-span-1",
+        "Primary Data (Charts): col-span-2 row-span-2 or col-span-3",
+        "Every pixel must be utilized. Use h-full on children."
+      ]
+    },
+    "surfaces": {
+      "dashboard_cards": "Flat background, 1px subtle border (border-border), no shadow. On hover: slight lift (-translate-y-1), border color darkens.",
+      "radius": "rounded-lg for outer containers, rounded-md for inner elements (Nested radii rule).",
+      "sidebar": "Solid background (surface) with a hard right border (border-border)."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-white hover:bg-primary-hover transition-colors rounded-md px-6 py-2 font-medium data-[testid]:true",
+      "secondary": "bg-transparent border border-border text-text-primary hover:bg-surface-muted transition-colors rounded-md px-6 py-2 font-medium data-[testid]:true"
+    },
+    "inputs": {
+      "style": "bg-transparent border border-border rounded-md px-4 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary text-text-primary transition-all",
+      "labels": "text-sm font-medium text-text-secondary mb-1.5 block"
+    },
+    "charts": {
+      "library": "recharts",
+      "style": "Clean, gridlines very faint (opacity 10%), use accent_positive and accent_negative for data lines/bars. Tooltips must match surface styles (1px border, dark/light bg)."
+    },
+    "tables": {
+      "style": "border-collapse w-full text-left. Headers: label typography (uppercase, tracked out). Rows: border-b border-border hover:bg-surface-muted transition-colors."
+    }
+  },
+  "motion": {
+    "rules": [
+      "Hover states on all interactive elements.",
+      "Entrance animations: staggered fade-in up for dashboard widgets (use Framer Motion).",
+      "Transition effects: transform 0.2s ease, opacity 0.2s ease."
+    ]
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "Stroke width 1.5, perfectly aligned with text baseline."
+  },
+  "media": {
+    "images": [
+      {
+        "category": "auth_background",
+        "url": "https://images.unsplash.com/photo-1760442904860-c0016d41ae4d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG1pbmltYWxpc3QlMjB0ZXh0dXJlJTIwbmV1dHJhbCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzc0NTI3MTU5fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Green and beige abstract background, earthy texture for login/signup split screen."
+      },
+      {
+        "category": "user_avatar",
+        "url": "https://images.pexels.com/photos/4861411/pexels-photo-4861411.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Happy woman smiling, used for the default profile avatar in the header/sidebar."
+      }
+    ]
+  },
+  "accessibility": {
+    "rules": [
+      "All interactive elements MUST include a data-testid attribute.",
+      "Hover state color must be a lighter hue of ACTIVE state color.",
+      "Focus states: Must have HIGHER contrast than default state (focus:ring-2).",
+      "Respect prefers-reduced-motion."
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Install 'Satoshi' and 'Manrope' fonts.",
+    "Configure Tailwind with the provided color variables for light and dark modes.",
+    "Build a persistent Sidebar navigation with active states.",
+    "For the Dashboard, strictly follow the 'Control Room' grid layout.",
+    "Use standard Shadcn components (Input, Select, Form, Dialog, Card) but heavily customize their border, spacing, and radius to match this earthy, flat style.",
+    "Ensure all monetary values are formatted with JetBrains Mono or a tabular lining font.",
+    "Implement the Theme Toggle (Light/Dark) in the header or sidebar.",
+    "Add data-testid attributes to all interactive elements for testing.",
+    "Use standard .js and .jsx files for the React frontend, not TypeScript (.tsx).",
+    "NEVER use placeholder images; use the provided media URLs."
+  ]
+}
